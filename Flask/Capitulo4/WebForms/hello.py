@@ -1,6 +1,5 @@
-from flask.templating import render_template
 from flask_wtf import Form
-from flask import Flask
+from flask import Flask, render_template, session
 from wtforms import StringField, SubmitField
 from wtforms.validators import Required
 
