@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-from flask import Flask
+from flask import Flask, jsonify
 import urllib
 
 app = Flask(__name__)
@@ -19,4 +19,11 @@ class City(db.Model):
     def __repr__(self):
         return "<City %r>" % self.description
 
-print(City.query.all())
+# print(City.query.all())
+
+@app.route("/city", methods=["GET"])
+def city():
+    return jsonify(City.query.all())
+
+if __name__ == "__main__":
+    app.run(debug=True, port=5000)
