@@ -16,7 +16,7 @@ SampleTable = Database.zips
 def get():
     p =  SampleTable.find({"state":"NY"})
     response = json_util.dumps(p)
-    return Response(response,mimetype='application/json')
+    return Response(response,mimetype='application/json', status=200)
     # return jsonify(response)
 
 

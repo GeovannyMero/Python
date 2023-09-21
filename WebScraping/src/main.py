@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import datetime
+import os
 
 URL_BASE = 'https://www.sri.gob.ec/datasets'
 data_obtenida = requests.get(URL_BASE)
@@ -23,8 +24,8 @@ for item in result:
     enlace = result[index].findChildren('a')
     
     if len(provincia) > 0:
-        provincia_enlace.append({'provincia': provincia[0].text, 'enlace': enlace[0].attrs["href"]})
-        print(f'{num} - {provincia[0].text} -> {enlace[0].attrs["href"]}')
+        provincia_enlace.append({'provincia': provincia[0].text, 'enlace': enlace[0].attrs["href"]}) # se almacena los datos en la variable indicada
+        print(f'{num} - {provincia[0].text} -> {enlace[0].attrs["href"]}') # se presenta las opciones para el procesamiento
         num += 1
     index += 1
 
@@ -39,10 +40,14 @@ else:
     provincia_name = provincia_enlace[option-1]['provincia']
     print(enlace)
     r = requests.get(enlace) # se envia petición para realizar la descarga
-    file_name = f'{provincia_name}_{datetime.datetime.now().year}.csv'
+    file_name = f'{provincia_name}_{datetime.datetime.now().year}.csv' # nombre del archivo a guardar
     
     with open(file_name, 'wb') as f: # se guarda el archivo.
         f.write(r.content)
-    
+
     print('Proceso finalizado.')
+
+    if os.path.isfile(file_name):
+        print('Si existe error')
+
                 
