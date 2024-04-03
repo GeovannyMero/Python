@@ -35,6 +35,7 @@ def leer_archivo(path_file: str):
                     # Insertar en DB
                     conexion = connect.ConectarMongoDB()
                     tabla = conexion.contribuyente
+                    
 
                     # # res = tabla.find()
                     result_insert = tabla.insert_many(datos)         
