@@ -20,7 +20,7 @@ def main():
         enlace_provincia = lista_provincia_enlace[opcion-1]['enlace']
         print(f'Se procede con la descarga del archivo de la provincia: {nombre_provincia}')
         nombre_archivo = DescargaDocumentos.DescargarArchivo(enlace_provincia, nombre_provincia)
-        print(f'El archivo descargado es {nombre_archivo}')
+        print(f'El archivo descargado es: {nombre_archivo}')
 
         if nombre_archivo != "":
             ProcesarDatos.leer_archivo(nombre_archivo)

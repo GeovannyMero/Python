@@ -18,7 +18,7 @@ def leer_archivo(path_file: str):
                     line_count = 0
                     for row in csv_reader:
                         if line_count == 0:
-                            print(f'Column names are {", ".join(row)}')
+                            # print(f'Column names are {", ".join(row)}')
                             line_count += 1
                         else:
                             # contribuyente = DatosSri.Datos(row[0], row[1], row[2], row[3], row[4], row[5], row[6],row[7], row[8], row[9], row[10], row[11], row[12], row[13], row[14], row[15], row[16], row[17], row[18], row[19])
@@ -28,7 +28,7 @@ def leer_archivo(path_file: str):
                             line_count += 1 
                     # print(datos[0])
                     print(f'Processed {line_count} lines')
-                    print(f'Cantidad de registro{len(datos)}')
+                    print(f'Cantidad de registro {len(datos)}')
                     # for item in datos:
                     #     print(f'{item.ruc} - {item.razon_social}')
 
@@ -40,8 +40,12 @@ def leer_archivo(path_file: str):
                     # # res = tabla.find()
                     result_insert = tabla.insert_many(datos)         
                     print(result_insert)
+                    print(f'Se procesó con éxito el archivo {path_file}')
             else:
                 print('El archivo no existe.')
     except Exception as ex:
         print(ex)
+    finally:
+        print(f'Eliminando archivo: {path_file}')
+        os.remove(path_file)
         
