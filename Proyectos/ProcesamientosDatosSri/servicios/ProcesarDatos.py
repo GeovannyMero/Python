@@ -13,6 +13,8 @@ def leer_archivo(path_file: str):
             check_file = os.path.isfile(path_file)
 
             if check_file:
+                print(f'Archivo a procesar es: {path_file}')
+                print(os.path.splitext(path_file)[1])
                 with open(path_file, 'r') as csv_file:
                     csv_reader = csv.reader(csv_file, delimiter='|')
                     line_count = 0

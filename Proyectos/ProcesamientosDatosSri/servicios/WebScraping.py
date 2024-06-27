@@ -30,4 +30,6 @@ def ObtenerDataWeb() -> []:
         return provincia_enlace
     except Exception as ex:
         print(ex)
+        raise Exception('OCURRIO UN PROBLEMA AL OBTENER DATASET....')
+        
 
